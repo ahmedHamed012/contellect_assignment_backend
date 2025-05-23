@@ -129,7 +129,7 @@ const checkUserExistenceById = async (id) => {
   const user = await userModel.getUserById(id);
 
   if (!user) {
-    return next(new AppError("User not found", 404));
+    throw new AppError("User not found", 404);
   }
 
   return user;

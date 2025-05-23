@@ -7,8 +7,13 @@ const {
   deleteContactById,
   getContactById,
 } = require("../controller/contact.controller");
+const { protect } = require("../../../middlewares/protect.middleware");
 const router = express.Router();
 
+// Protecting the routes
+router.use(protect);
+
+// Routes
 router.post("/", validateContact, createContact);
 router.get("/all", getContactsWithPaginationAndFilters);
 router.get("/:id", getContactById);

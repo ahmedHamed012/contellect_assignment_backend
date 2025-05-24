@@ -49,7 +49,7 @@ const getContactsWithPaginationAndFilters = catchAsync(
   async (req, res, next) => {
     const { page, limit, name, phone, address } = req.query;
 
-    const filters = {};
+    const filters = { deleted: { $ne: true } };
     if (name) filters.name = { $regex: name, $options: "i" };
     if (phone) filters.phone = { $regex: phone, $options: "i" };
     if (address) filters.address = { $regex: address, $options: "i" };

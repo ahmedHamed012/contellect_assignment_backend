@@ -98,6 +98,7 @@ class ContactModel {
    */
   async deleteContact(id) {
     try {
+      console.log("Iam entered here", id);
       const contact = await Contacts.findByIdAndUpdate(
         id,
         { $set: { deleted: true, deletedAt: Date.now() } },
